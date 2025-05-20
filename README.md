@@ -1,67 +1,52 @@
-# mini-projet-docker
-Ce projet a pour objectif de dockeriser une application web composée de deux modules : une API développée avec Flask et une interface utilisateur en PHP. L’ensemble est conçu pour une entreprise fictive nommée POZOS.
+# 📦 Mini-projet Docker – Student List App
 
-🛠️ Stack technique
-Docker
+Ce projet a pour but de **dockeriser une application web** composée de deux parties :
+- Une **API** développée avec **Flask** (Python)
+- Un **front-end** en **PHP** avec Apache
 
-Docker Compose
+Le tout est orchestré avec **Docker Compose**, pour simuler une architecture déployée proprement.  
+Projet réalisé pour une entreprise fictive : **POZOS**.
 
-Flask (API REST)
+---
 
-PHP / Apache (interface front-end)
+## 🛠️ Stack technique
 
-CentOS (VM recommandée pour l’exécution)
+- 🐳 Docker
+- 🧩 Docker Compose
+- 🐍 Flask (API REST)
+- 🐘 PHP / Apache (interface utilisateur)
+- 💽 CentOS (VM recommandée)
 
-📁 Structure du projet
-Dockerfile : construction de l’image Docker pour l’API Flask
+---
 
-docker-compose.yml : orchestration du déploiement des services Flask et PHP
+## 📁 Structure des fichiers
 
-requirements.txt : dépendances Python
+| Fichier / Dossier        | Rôle                                                                 |
+|--------------------------|----------------------------------------------------------------------|
+| `Dockerfile`             | Création de l’image Docker pour l’API Flask                         |
+| `docker-compose.yml`     | Déploiement orchestré de l’API + interface PHP                      |
+| `requirements.txt`       | Dépendances Python pour Flask                                        |
+| `student_age.json`       | Données des étudiants (fichier JSON)                                |
+| `student_age.py`         | Script Flask fournissant l’API                                      |
+| `index.php`              | Interface utilisateur qui consomme l’API                            |
+| `/website/`              | Dossier contenant les fichiers du front PHP                         |
 
-student_age.json : fichier de données JSON (étudiants)
+---
 
-student_age.py : script Python de l’API
+## ⚙️ Fonctionnalités
 
-index.php : page d’accueil du site PHP
+- L’**API Flask** fournit des données sur les étudiants au format JSON
+- L’**interface PHP** appelle cette API et affiche les résultats
+- Utilisation de :
+  - **Volumes Docker**
+  - **Ports exposés**
+  - **Variables d’environnement**
+- Déploiement complet orchestré via **Docker Compose**
 
-/website/ : dossier monté contenant les fichiers PHP
+---
 
-⚙️ Fonctionnalités
-L’API Flask retourne une liste d’étudiants au format JSON
+## 🚀 Lancement du projet
 
-Le front-end PHP interroge cette API et affiche les données
-
-Mise en place de volumes, ports exposés et variables d’environnement
-
-Déploiement automatisé avec Docker Compose
-
-🚀 Lancement du projet
-Construire l’image de l’API :
-
-bash
-Copier
-Modifier
+### 1. Construire l’image Docker pour l’API
+```bash
 docker build -t student-api .
-Démarrer l’ensemble des services :
-
-bash
-Copier
-Modifier
-docker-compose up -d
-Tester l’API via curl :
-
-bash
-Copier
-Modifier
-curl -u toto:python http://localhost:5000/pozos/api/v1.0/get_student_ages
-Accéder à l’interface web via le navigateur sur le port défini dans docker-compose.yml
-
-🎓 Objectifs pédagogiques
-Appliquer les bonnes pratiques en matière de conteneurisation avec Docker
-
-Structurer une application multi-conteneurs avec Docker Compose
-
-Maîtriser la gestion des volumes, réseaux, ports et services
-
-Comprendre l’architecture logicielle découplée
